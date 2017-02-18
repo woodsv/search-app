@@ -1,0 +1,11 @@
+<div id="searchComp" ng-controller='SearchController'>
+	<input type="text" value="Remove" class="btn btn-primary" ng-model="searchValue" />
+	<button ng-click="getSearchResult(searchValue)">Hello</button>
+	<section id="movies">
+		<div ng-repeat='movie in movies' class="item">
+			<img ng-src="{{movie.poster_path?('http://image.tmdb.org/t/p/w300' + movie.poster_path):'../movieReel.png'}}"/>
+
+		</div>
+	</section>
+</div>
+
