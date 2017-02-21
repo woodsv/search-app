@@ -81,6 +81,10 @@ header{
   text-align: center;
 }
 
+div#searchComp {
+    text-align: center;
+}
+
 h1 {
   44color: #444444;
   44text-shadow: -1px -1px 1px #000, 1px 1px 1px #ccc;
@@ -91,8 +95,8 @@ h1 {
 }
 
 button{
-  background-color: darkred;
-  color: #d0f8ff;
+  background-color: #d0f8ff;
+  color: #000000;
 }
 
 .paginationclass{
