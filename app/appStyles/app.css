@@ -1,0 +1,140 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li + li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+#movies {
+  display: flex;
+  flex-flow: row wrap;
+  width: auto;
+  justify-content: space-between;
+  margin: 10px 30px;
+}
+
+#movies .item {
+  display: inline-block;
+  margin: 15px 8px;
+  max-width: 23.5em;
+}
+
+.item img {
+  width: 50%;
+  height: 50%;
+  border-radius: 8px 0px 0px 8px;
+  -moz-border-radius: 8px 0px 0px 8px;
+  -webkit-border-radius: 8px 0px 0px 8px;
+}
+
+.item .movieCard{
+  display:flex;
+  width: 24em;
+  background-color: rgba(208, 248, 255, 0.43);
+  border-radius: 8px;
+  border: 1px solid #A5F1FF;
+  box-shadow: 0 0 5px #A5F1FF, 0 0 10px #A5F1FF, 0 0 20px #A5F1FF, 0 0 30px #A5F1FF, 0 0 40px #A5F1FF;
+}
+
+#movies .item span.info{
+  display:block;
+  text-align: center;
+  margin: 7px;
+  color: #000000;
+  text-align: left;
+  font-size: small;
+  overflow: hidden;
+}
+
+.info label {
+  font-weight: bold;
+}
+
+i.fa.fa-star {
+    color: #ffd700;
+}
+
+body{
+  background-color:#596b68;
+}
+
+header{
+  text-align: center;
+}
+
+h1 {
+  44color: #444444;
+  44text-shadow: -1px -1px 1px #000, 1px 1px 1px #ccc;
+  color: #D0F8FF;
+  text-shadow: 0 0 5px #A5F1FF, 0 0 10px #A5F1FF,
+         0 0 20px #A5F1FF, 0 0 30px #A5F1FF,
+         0 0 40px #A5F1FF;
+}
+
+button{
+  background-color: darkred;
+  color: #d0f8ff;
+}
+
+.paginationclass{
+  margin: 19px 28px;    
+}
+
+.paginationclass span{
+  margin-left:15px;
+  display:inline-block;
+}
+
+.pagination-controle li{
+  display: inline-block;
+}
+
+.pagination-controle button{
+  font-size: 12px;
+  margin-top: -26px;
+  cursor:pointer;
+  
+}
+.pagination{
+  margin:5px 12px !important;
+  display: inline-block;
+  color: #D0F8FF;
+}
+
+.searchSec{
+  display: inline-block;  
+}
+
+.searchSec a, .searchSec label{
+  color: #D0F8FF; 
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.truncate1 {
+  white-space: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height:16em;
+}
