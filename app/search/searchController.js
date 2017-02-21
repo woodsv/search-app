@@ -9,6 +9,7 @@ angular.module('myApp').controller('SearchController', ['$scope', '$http',functi
     function init() {
         $scope.getNowPlaying();
     }
+
     $scope.getNowPlaying = function (){
     	return $http({
 		    method: 'GET',
@@ -25,8 +26,8 @@ angular.module('myApp').controller('SearchController', ['$scope', '$http',functi
 		  	$scope.totalResults = response.data.total_results;
  			$scope.numberOfPages = response.data.total_pages;
 		});
+	};
 
-    }
     $scope.getSearchResult = function(){
     	return $http({
 		    method: 'GET',
@@ -36,7 +37,7 @@ angular.module('myApp').controller('SearchController', ['$scope', '$http',functi
 		  	for(var i = 0; i < response.data.results.length; i++) {
 		  		movies.push(response.data.results[i]);
 		  	}
-		  	console.log(response.data);
+		  	//console.log(response.data);
 		  	$scope.movies = movies;
 		  	$scope.curPage = response.data.page;
 		  	$scope.totalResults = response.data.total_results;
@@ -51,7 +52,8 @@ angular.module('myApp').controller('SearchController', ['$scope', '$http',functi
     	}else{
     		$scope.getSearchResult();
     	}
-    }
+    };
+
     $scope.getPreviousPage = function(){
     	if($scope.curPage<=1){
     		return;
@@ -63,7 +65,7 @@ angular.module('myApp').controller('SearchController', ['$scope', '$http',functi
     	}else{
     		$scope.getSearchResult();
     	}
-    }
+    };
 
     $scope.getFirstPage = function(){
     	$scope.curPage = 1;
@@ -72,7 +74,7 @@ angular.module('myApp').controller('SearchController', ['$scope', '$http',functi
     	}else{
     		$scope.getSearchResult();
     	}
-    }
+    };
 
     $scope.getLastPage = function(){
     	$scope.curPage = $scope.numberOfPages;
@@ -81,7 +83,7 @@ angular.module('myApp').controller('SearchController', ['$scope', '$http',functi
     	}else{
     		$scope.getSearchResult();
     	}
-    }
+    };
 
     init();
 }]);
