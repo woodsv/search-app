@@ -1,42 +1,63 @@
 angular.module('myApp').controller('SearchController', ['$scope', '$http',function($scope, $http) {
 	$scope.searchValue = '';
+	$scope.curPage = 1;
+	$scope.numberOfPages = 0;
+	$scope.totalResults = 0;
     //initialize page
-    init();
-
+    
     
     function init() {
-        let movies = [];
-        return $http({
+        $scope.getNowPlaying();
+    }
+    $scope.getNowPlaying = function (){
+    	return $http({
 		    method: 'GET',
-		    url: 'http://api.themoviedb.org/3/movie/now_playing?api_key=67bfb97a79e0558254dcc7cd34bc8a2a&page=1'
+		    url: 'http://api.themoviedb.org/3/movie/now_playing?api_key=67bfb97a79e0558254dcc7cd34bc8a2a&page='+$scope.curPage
 		}).then(function(response) {
+		  	let movies = [];
 		  	for(var i = 0; i < response.data.results.length; i++) {
 		  		movies.push(response.data.results[i]);
 		  	}
-		  	console.log(response.data);
+		  	console.log(response.data.total_pages);
 		  	$scope.movies = movies;
-
+		  	$scope.curPage = response.data.page;
+		  	$scope.totalResults = response.data.total_results;
+ 			$scope.numberOfPages = response.data.total_pages;
 		});
     }
-
-    $scope.getSearchResult = function(searchValue){
-		let movies = [];
-        console.log(searchValue);
-        return $http({
+    $scope.getSearchResult = function(){
+    	return $http({
 		    method: 'GET',
-		    url: 'https://api.themoviedb.org/3/search/movie?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c&query='+$scope.searchValue+'&include_adult=false'
+		    url: 'https://api.themoviedb.org/3/search/movie?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c&query='+$scope.searchValue+'&page='+$scope.curPage+'&include_adult=false'
 		}).then(function(response) {
+		  	let movies = [];
 		  	for(var i = 0; i < response.data.results.length; i++) {
 		  		movies.push(response.data.results[i]);
 		  	}
 		  	console.log(response.data);
 		  	$scope.movies = movies;
-		    return response.data;
-
+		  	$scope.curPage = response.data.page;
+		  	$scope.totalResults = response.data.total_results;
+ 			$scope.numberOfPages = response.data.total_pages;
 		});
     };
 
-    
-        
+    $scope.getNextPage = function(){
+    	$scope.curPage = $scope.curPage+1;
+    	if ($scope.searchValue==""){
+    		$scope.getNowPlaying();
+    	}else{
+    		$scope.getSearchResult();
+    	}
+    }
+    $scope.getPreviousPage = function(){
+    	$scope.curPage = $scope.curPage-1;
+    	if ($scope.searchValue==""){
+    		$scope.getNowPlaying();
+    	}else{
+    		$scope.getSearchResult();
+    	}
+    }
 
+    init();
 }]);

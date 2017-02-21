@@ -35,12 +35,88 @@
 #movies .item {
   display: inline-block;
   margin: 15px 8px;
+  max-width: 275px;
 }
 
 .item img {
-  width: 250px;
-  height: 400px;
-  border-radius: 8px 8px 8px 8px;
-  -moz-border-radius: 8px 8px 8px 8px;
-  -webkit-border-radius: 8px 8px 8px 8px;
+  width: 43%;
+  height: 43%;
+  border-radius: 8px 0px 0px 8px;
+  -moz-border-radius: 8px 0px 0px 8px;
+  -webkit-border-radius: 8px 0px 0px 8px;
+}
+
+.item .movieCard{
+  display:flex;
+  background-color: rgba(208, 248, 255, 0.43);
+  border-radius: 8px;
+  border: 1px solid #A5F1FF;
+  box-shadow: 0 0 5px #A5F1FF, 0 0 10px #A5F1FF, 0 0 20px #A5F1FF, 0 0 30px #A5F1FF, 0 0 40px #A5F1FF;
+}
+
+#movies .item span.info{
+  display:block;
+  text-align: center;
+  margin: 7px;
+  color: #000000;
+  text-align: left;
+  font-size: small;
+}
+
+.info label {
+  font-weight: bold;
+}
+
+i.fa.fa-star {
+    color: #ffd700;
+}
+
+body{
+  background-color:#596b68;
+}
+
+header{
+  text-align: center;
+}
+
+h1 {
+  44color: #444444;
+  44text-shadow: -1px -1px 1px #000, 1px 1px 1px #ccc;
+  color: #D0F8FF;
+  text-shadow: 0 0 5px #A5F1FF, 0 0 10px #A5F1FF,
+         0 0 20px #A5F1FF, 0 0 30px #A5F1FF,
+         0 0 40px #A5F1FF;
+}
+
+button{
+  background-color: darkred;
+  color: #d0f8ff;
+}
+
+.paginationclass{
+  margin: 19px 28px;    
+}
+
+.paginationclass span{
+  margin-left:15px;
+  display:inline-block;
+}
+
+.pagination-controle li{
+  display: inline-block;
+}
+
+.pagination-controle button{
+  font-size: 12px;
+  margin-top: -26px;
+  cursor:pointer;
+  
+}
+.pagination{
+  margin:5px 12px !important;
+  display: inline-block;
+}
+
+.searchSec{
+  display: inline-block;  
 }

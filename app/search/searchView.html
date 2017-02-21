@@ -1,10 +1,41 @@
 <div id="searchComp" ng-controller='SearchController'>
-	<input type="text" value="Remove" class="btn btn-primary" ng-model="searchValue" />
-	<button ng-click="getSearchResult(searchValue)">Hello</button>
-	<section id="movies">
+	
+	<section class="searchSec">
+		<label >Movie Search</label>
+	    <input type="text" ng-model="searchValue" class="form-control" placeholder="Search">
+		<button ng-click="getSearchResult()">Search</button>
+	</section>
+	<section class="pagination pagination-centered" >
+		<ul class="pagination-controle pagination">
+			<li>
+				<button type="button" class="" ng-disabled="curPage == 1" ng-click="getPreviousPage()"> &lt; PREV</button>
+			</li>
+			<li>
+				<span>Page {{curPage}} of {{ numberOfPages }}</span>
+			</li>
+			<li>
+				<button type="button" class="" ng-disabled="curPage == numberOfPages" ng-click="getNextPage()">NEXT &gt;</button>
+			</li>
+		</ul>
+	</section>
+    <section id="movies">
 		<div ng-repeat='movie in movies' class="item">
-			<img ng-src="{{movie.poster_path?('http://image.tmdb.org/t/p/w300' + movie.poster_path):'../movieReel.png'}}"/>
-
+			<div class="movieCard">
+				<img ng-src="{{movie.poster_path?('http://image.tmdb.org/t/p/w300' + movie.poster_path):'../movieReel.png'}}" alt='{{movie.title}}'/>
+				<span class="info">
+					<div><label >Title: </label><span> {{movie.title}} </span></div>
+					<label >Rating: </label> {{movie.vote_average}}
+					<i class="fa fa-star" aria-hidden="true"></i>
+					<div>
+						<label>Release date: </label> 
+						<span>{{movie.release_date}}</span>
+					</div>
+					<div>
+						<label>Overview: </label> 
+						<span></span>
+					</div>
+				</span>
+			</div>
 		</div>
 	</section>
 </div>
